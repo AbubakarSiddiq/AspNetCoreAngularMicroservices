@@ -160,3 +160,26 @@ services:
       - ordering.api
     ports:
       - "8006:80"
+
+  calrom.angular.app:
+    image: calromangularapp:dev
+    container_name: calrom.angular.app
+    ports:
+      - "4200:4200"
+      - "49156:49153"
+    volumes:
+      - ./WebApps/ClientApp/ClientApp:/app
+
+  calrom.client:
+    container_name: calrom.client
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    build:
+        args:
+        - skip_client_build=true
+    ports:
+      - "8088:80"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+    depends_on:
+      - calrom.angular.app

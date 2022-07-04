@@ -70,13 +70,18 @@ services:
       context: .
       dockerfile: WebApps/AspnetRunBasics/Dockerfile
 
+  calrom.angular.app:
+    build:
+      context: .
+      dockerfile: WebApps/ClientApp/ClientApp/Dockerfile
+
+  calrom.client:
+    build:
+      context: .
+      dockerfile: WebApps/ClientApp/Dockerfile
+
 volumes:
   mongo_data:
   portainer_data:
   postgres_data:
   pgadmin_data:
-
-
-
-
-
