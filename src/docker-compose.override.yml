@@ -69,6 +69,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - "DatabaseSettings:ConnectionString=mongodb://catalogdb:27017"
+      - ASPNETCORE_URLS=http://0.0.0.0:80
     depends_on:
       - catalogdb
     ports:
@@ -78,9 +79,10 @@ services:
     container_name: basket.api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - "CacheSettings:ConnectionString=basketdb:6379"
-      - "GrpcSettings:DiscountUrl=http://discount.grpc"
-      - "EventBusSettings:HostAddress=amqp://guest:guest@rabbitmq:5672"
+      - "CacheSettings__ConnectionString=basketdb:6379"
+      - "GrpcSettings__DiscountUrl=http://discount.grpc"
+      - "EventBusSettings__HostAddress=amqp://guest:guest@rabbitmq:5672"
+      - ASPNETCORE_URLS=http://0.0.0.0:80
     depends_on:
       - basketdb
       - rabbitmq
@@ -93,6 +95,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - "DatabaseSettings:ConnectionString=Server=discountdb;Port=5432;Database=DiscountDb;User Id=admin;Password=admin1234;"
+      - ASPNETCORE_URLS=http://0.0.0.0:80
     depends_on:
       - discountdb
     ports:
@@ -103,7 +106,7 @@ services:
     container_name: discount.grpc
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - "DatabaseSettings:ConnectionString=Server=discountdb;Port=5432;Database=DiscountDb;User Id=admin;Password=admin1234;"
+      - "DatabaseSettings__ConnectionString=Server=discountdb;Port=5432;Database=DiscountDb;User Id=admin;Password=admin1234;"
     depends_on:
       - discountdb
     ports:
@@ -113,8 +116,9 @@ services:
     container_name: ordering.api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - "ConnectionStrings:OrderingConnectionString=Server=orderdb;Database=OrderDb; User Id=sa; Password=Bakar12345;TrustServerCertificate=true;"   
-      - "EventBusSettings:HostAddress=amqp://guest:guest@rabbitmq:5672"
+      - "ConnectionStrings__OrderingConnectionString=Server=orderdb;Database=OrderDb; User Id=sa; Password=Bakar12345;TrustServerCertificate=true;"   
+      - "EventBusSettings__HostAddress=amqp://guest:guest@rabbitmq:5672"
+      - ASPNETCORE_URLS=http://0.0.0.0:80
     depends_on:
         - orderdb
         - rabbitmq
@@ -152,6 +156,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - "ApiSettings:GatewayAddress=http://ocelotapigw"
+      - ASPNETCORE_URLS=http://0.0.0.0:80
     depends_on:
       - ocelotapigw
       - catalog.api
@@ -174,6 +179,9 @@ services:
     container_name: calrom.client
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - NG_DEV_SERVER=http://calrom.angular.app:4200
+      - Services__ApiUrl=http://localhost:8010
+      - ASPNETCORE_URLS=http://0.0.0.0:80
     build:
         args:
         - skip_client_build=true

@@ -1,0 +1,36 @@
+<!-- breadcrumb start -->
+<app-breadcrumb [title]="'404 page'" [breadcrumb]="'404 page'" *ngIf="!orderDetails"></app-breadcrumb>
+<!-- breadcrumb End -->
+
+<!-- section start -->
+<section class="p-0" *ngIf="!orderDetails">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="error-section">
+                    <h1>404</h1>
+                    <h2>page not found</h2>
+                    <a [routerLink]="'/'" class="btn btn-solid">back to home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Section ends -->
+
+<!-- thank-you section start -->
+<section class="section-b-space light-layout" *ngIf="orderDetails">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="success-text">
+                    <i class="fa fa-check-circle" aria-hidden="true"></i>
+                    <h2>thank you</h2>
+                    <p>Your Order Placed Successfully</p>
+                    <button class="btn btn-success">Download Receipt</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Section ends -->

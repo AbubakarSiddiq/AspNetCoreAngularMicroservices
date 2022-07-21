@@ -1,0 +1,47 @@
+<owl-carousel-o [options]="HomeSliderConfig" class="home-slider" [ngClass]="class">
+	<ng-container *ngFor="let slider of sliders">
+	  <ng-template carouselSlide>
+	    <div class="home" [ngClass]="textClass" [ngStyle]="{'background-image': 'url('+slider.image+')'}">
+	      <div class="container">
+	        <div class="row">
+	          <div class="col" >
+	            <div   class="slider-contain">
+				<div style="width: 100%;" >
+					<!-- <h4>{{slider.title}}</h4> -->
+									<h2>{{slider.subTitle}}</h2>
+					                <!-- <a [routerLink]="['/categories']" 
+					                   [queryParams]="{ category: category}" 
+					                   class="btn btn-solid" [ngClass]="buttonClass">
+					                   {{buttonText}}
+									</a> -->
+				
+					<form class="form-header" style="width: 100%;">
+						<div class="form-group" style="opacity: 0.6;" >
+							<input  type="text" class="form-control" id="exampleInputPassword1" 
+							name="searchProduct" [(ngModel)]="productSearch"
+							placeholder="Enter Product Name">
+						</div>
+						<button type="submit" style="background-color: #02ce35; color: white;" 
+						class="btn" (click)="searchProduct()" > Search
+							<!-- <i style="color: white;" class="fa fa-search"></i> -->
+						</button>
+					</form>
+					
+									<!-- <form class="form-header">
+						<div class="form-group">
+							<input type="text" class="form-control" id="exampleInputPassword1" 
+							placeholder="Search a Product">
+						</div>
+						<button type="submit" class="btn btn-primary"><i style="color: white;" class="fa fa-search"></i></button>
+					</form> -->
+				
+				
+				</div>
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	  </ng-template>
+	</ng-container>
+</owl-carousel-o>

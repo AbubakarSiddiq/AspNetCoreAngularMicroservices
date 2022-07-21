@@ -1,0 +1,61 @@
+<!--modal popup start-->
+<ng-template class="theme-modal" #ageVerification let-modal>
+	<div class="modal-content">
+        <div class="modal-body modal13">
+            <div class="container-fluid p-0">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="modal-bg">
+                            <div class="age-content">
+                                <h2> Select Your Delivery Area </h2>
+                                <!-- <h4>This Website requires you to be 18 years or older to enter. Please enter your Date Of Birth in this fields below in order to continue:</h4> -->
+                                <!-- id="demoForm" -->
+                                <form  [formGroup]="ageVerificationForm" novalidate="" >
+
+                                    <!-- <div>
+                                        <input type="number" name="day" id="birthDay" 
+                                        [formControl]="ageVerificationForm.controls['day']" value="" class="form-control" placeholder="DD" min="1" max="2">
+                                        <input type="number" name="month" id="birthMonth" value="" 
+                                        [formControl]="ageVerificationForm.controls['month']" class="form-control" placeholder="MM" min="1" max="2">
+                                        <input type="number" name="year" id="birthYear" value="" 
+                                        [formControl]="ageVerificationForm.controls['year']" class="form-control" placeholder="YY" min="1" max="4">
+                                    </div> -->
+                                    <div class="row">
+                                        <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                            <!-- <div class="field-label">City</div> -->
+                                            <!-- [(ngModel)]="checkoutModel.city" -->
+                                            <input disabled  [(ngModel)]="city" type="text" name="town" 
+                                            class="form-control"  
+                                            [formControl]="ageVerificationForm.controls['city']" 
+                                            value="Okara" placeholder="" autocomplete="off">
+                                             <div *ngIf="ageVerificationForm.controls.city.touched && ageVerificationForm.controls.city.errors?.required" class="text text-danger">
+                                             City is required
+                                            </div> 
+                                        </div>
+    
+                                        <div   class="form-group col-md-12 col-sm-12 col-xs-12"> 
+                                            <!-- <div class="field-label">Area</div>  -->
+                                            <p-dropdown [style]="{'width': '100%'}"  [options]="areas" [filter]="true" [(ngModel)]="areaObj" name="area" 
+                                            optionLabel="name" dataKey="areaId"  placeholder="Select Area" [virtualScroll]="true" itemSize="15"  
+                                            [formControl]="ageVerificationForm.controls['area']" 
+                                            ></p-dropdown> 
+                                            <div *ngIf="ageVerificationForm.controls.area.touched && ageVerificationForm.controls.area.errors?.required"
+                                                class="text text-danger">
+                                                Area is required.
+                                            </div> 
+                                        </div>
+                                    </div>
+                                    <button type="submit" (click)="areaSelectionForm()" [disabled]="!ageVerificationForm.valid" class="btn btn-solid">
+                                    	submit
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+<!--modal popup end-->
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size = "medium" color = "#02ce35" type = "ball-atom" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>

@@ -1,0 +1,73 @@
+<app-breadcrumb [title]="'Login'" [breadcrumb]="'Login'"></app-breadcrumb>
+<!-- section start -->
+<section class="login-page section-b-space">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h3>Login</h3>
+                <div class="theme-card">
+                    <form class="theme-form" [formGroup]="loginForm" novalidate="">
+                        <div class="form-group">
+                            <label for="username">Phone Number</label>
+                            <!-- <input required="" name="login[username]" type="text" 
+                                                        class="form-control" placeholder="Username"
+                                                        formControlName="username" [formControl]="loginForm.controls['username']"
+                                                        id="username23" [(ngModel)]="LoginObj.username"  >
+
+                                                        <div *ngIf="loginForm.controls.username.touched && loginForm.controls.username.errors?.required" class="text text-danger">
+                                                            User Name is required.
+                                                            </div> -->
+
+                            <input [(ngModel)]="LoginObj.email" type="text" name="email"
+                                [formControl]="loginForm.controls['email']" class="form-control" formControlName="email"
+                                id="email" value="" placeholder="E.g. 0321*******" autocomplete="off">
+                            <div *ngIf="loginForm.controls.email.touched && loginForm.controls.email.errors?.required"
+                                class="text text-danger">
+                                Phone Number is required
+                            </div>
+                            <div *ngIf="loginForm.controls.email.touched && loginForm.controls.email.errors?.pattern"
+                                class="text text-danger">
+                                Please Enter Valid Phone Number
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input required="" name="login[password]" type="password" class="form-control"
+                                placeholder="Password" formControlName="password"
+                                [formControl]="loginForm.controls['password']" [(ngModel)]="LoginObj.password">
+                            <div *ngIf="loginForm.controls.password.touched && loginForm.controls.password.errors?.required"
+                                class="text text-danger">
+                                Password is required.
+                            </div>
+                            <div *ngIf="loginForm.controls.password.touched && loginForm.controls.password.errors?.pattern"
+                                class="text text-danger">
+                                Password length must be greater than 5
+                            </div>
+                        </div>
+                        <button (click)="login()" type="submit" class="btn btn-solid">Login</button><br>
+                        <a style="color: #02ce35;" routerLink="/forget/password" routerLinkActive="active">Forgot Password</a>
+                        <!-- <button style="margin-left: 5px;" routerLink="/forget/password" routerLinkActive="active"
+                            type="submit" class="btn btn-solid">Forgot Password</button> -->
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-6 right-login">
+                <h3>New Customer</h3>
+                <div class="theme-card authentication-right">
+                    <h6 class="title-font">Create A Account</h6>
+                    <p>Sign up for a free account at our store. Registration is quick and easy. It allows you to be able
+                        to order from our shop. To start shopping click register.</p>
+                    <button routerLink="/register" routerLinkActive="active" class="btn btn-solid">Create an
+                        Account</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Section ends-->
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size = "medium" color = "#02ce35" type = "ball-atom" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>
+
+
+

@@ -1,0 +1,31 @@
+<div class="img-wrapper">
+	<div class="front">
+        <a [routerLink]="['/product/left/sidebar/', product.name.replace(' ', '-')]">
+            <img [defaultImage]="'assets/images/product/' + product.imageFile" 
+                 [lazyLoad]="'assets/images/product/' + product.imageFile"  
+                 class="img-fluid lazy-loading" alt="{{ product.imageFile }}">                 
+        </a>
+	</div>
+	<div class="cart-box">
+		<button title="Add to cart" (click)="CartModal.openModal(product)" *ngIf="cartModal">
+            <i class="ti-shopping-cart"></i>
+        </button>
+        <button title="Add to cart" (click)="addToCart(product)" *ngIf="!cartModal">
+            <i class="ti-shopping-cart"></i>
+        </button>
+		<a href="javascript:void(0)" title="Quick View" (click)="QuickView.openModal()">
+            <i class="ti-search" aria-hidden="true"></i>
+        </a>
+	</div>
+</div>
+<div class="product-detail text-center name-area" >
+    <a [routerLink]="['/product/left/sidebar/', product.name.replace(' ', '-')]">
+        <h6>{{ product.name }}</h6>
+    </a>
+    <h4>
+        {{ product?.price | discount:product | currency:currency?.currency:'symbol' }}
+    </h4>
+</div>
+
+<app-quick-view #quickView [product]="product" [currency]="currency"></app-quick-view>
+<app-cart-modal #cartModal [product]="product" [currency]="currency" *ngIf="cartModal"></app-cart-modal>

@@ -1,0 +1,79 @@
+<app-header-four [sticky]="true"></app-header-four>
+<!-- Home slider start-->
+<section class="p-0">
+  <app-slider 
+    [sliders]="sliders" 
+    [textClass]="'text-center'"
+    [category]="'vegetables'"
+    [buttonText]="'shop now'"> 
+  </app-slider>
+</section>
+<!-- Home slider End -->
+
+<!-- Services -->
+<section class="banner-padding absolute-banner pb-0">
+    <div class="container absolute-bg">
+      <div class="service p-0 ">
+        <app-services></app-services>
+      </div>
+    </div>
+  </section>
+  <!-- Services end -->
+
+<!-- product section -->
+<section class="section-b-space">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="title4">
+                    <h2 class="title-inner4">trending products</h2>
+                    <div class="line">
+                        <span></span>
+                    </div>
+                </div>
+                <owl-carousel-o class="product-5 product-m no-arrow" [options]="ProductSliderConfig">
+                  <ng-container *ngFor="let product of products">
+                    <ng-template carouselSlide>
+                      <div class="product-box product-wrap">
+                          <app-product-box-two 
+                            [product]="product"
+                            [currency]="product.price"
+                            [cartModal]="true">    
+                          </app-product-box-two>
+                      </div>
+                    </ng-template>
+                  </ng-container>
+                </owl-carousel-o>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- product section end -->
+\
+
+
+<!-- Parallax banner -->
+<section class="p-0">
+    <div class="full-banner parallax-banner15 parallax text-left p-left"
+        [ngStyle]="{'background-image': 'url(assets/images/parallax/vegetable_1920_1080_min.png)'}">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="banner-contain">
+                        <h2>2021</h2>
+                        <h3>Online Grocery</h3>
+                        <h4>special offer</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Parallax banner end -->
+
+ 
+ 
+<!-- Cart Open To Right Side-->
+<app-cart-variation *ngIf="getCartItems" [direction]="'right'"></app-cart-variation> 
+<app-footer-two></app-footer-two>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size = "medium" color = "#02ce35" type = "ball-atom" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>

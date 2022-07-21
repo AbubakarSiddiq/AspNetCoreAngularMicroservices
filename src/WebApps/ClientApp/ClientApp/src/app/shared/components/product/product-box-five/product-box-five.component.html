@@ -1,0 +1,37 @@
+<div class="img-wrapper">
+    <div class="front">
+      <a>
+            <img [defaultImage]="'assets/images/product/' + product.imageFile" 
+            [lazyLoad]="'assets/images/product/' + product.imageFile"
+             class="img-fluid lazy-loading" alt="{{ product.name }}"> 
+      </a>
+    </div> 
+    <div class="cart-info cart-wrap">
+      <button title="Add to cart" (click)="CartModal.openModal(product)" *ngIf="cartModal">
+        <i class="ti-shopping-cart"></i> Add to cart
+      </button>
+      <button title="Add to cart" (click)="addToCart(product)" *ngIf="!cartModal">
+        <i class="ti-shopping-cart"></i> Add to cart
+      </button>
+
+      <a href="javascript:void(0)" title="Add to Wishlist">
+        <i  aria-hidden="true"></i>
+      </a>
+  </div>
+
+    
+  </div>
+  <div class="product-info name-area">
+    <div>
+      <a >
+        <h6><b>{{ product.name | titlecase }}</b></h6>
+      </a>
+      <h4>
+        {{"Rs"}} {{ product?.price }}  
+      </h4>
+    </div>
+  </div> 
+  
+  <app-cart-modal #cartModal [product]="product" [currency]="currency" *ngIf="cartModal"></app-cart-modal> 
+  
+  

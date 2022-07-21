@@ -1,0 +1,189 @@
+<app-breadcrumb [title]="'Checkout'" [breadcrumb]="'Checkout'"></app-breadcrumb>
+<section class="section-b-space">
+    <div class="container padding-cls">
+        <div class="checkout-page">
+            <div class="checkout-form">
+                <form  [formGroup]="checkoutForm" novalidate="" >
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-12 col-xs-12">
+                            <div class="checkout-title">
+                                <h3>Billing Details</h3>
+                            </div>
+                            <div class="row check-out">
+                                <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                  <!--first name -->
+                                <div class="field-label">First Name</div>
+                                  <input type="text" [(ngModel)]="Order.firstName" name="firstName"
+                                    [formControl]="checkoutForm.controls['firstName']"
+                                    value="" placeholder="" autocomplete="off">
+                                  <div *ngIf="checkoutForm.controls.firstName.touched && checkoutForm.controls.firstName.errors?.required"
+                                    class="text text-danger">
+                                    First Name is required.
+                                  </div>
+                                  <div *ngIf="checkoutForm.controls.firstName.touched && checkoutForm.controls.firstName.errors?.pattern"
+                                    class="text text-danger">
+                                    First Name must be an alphabates.
+                                  </div>
+                                </div>
+
+                                <!--last name-->
+                                <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                    <div class="field-label">Last Name </div>
+                                    <input [(ngModel)]="Order.lastName" type="text" name="lastName"
+                                    [formControl]="checkoutForm.controls['lastName']" value="" placeholder="" autocomplete="off">
+                                    <div *ngIf="checkoutForm.controls.lastName.touched && checkoutForm.controls.lastName.errors?.required" class="text text-danger">
+                                    Last Name is required.
+                                    </div>
+                                    <div *ngIf="checkoutForm.controls.lastName.touched && checkoutForm.controls.lastName.errors?.pattern" class="text text-danger">
+                                    Last Name must be an alphabates.
+                                    </div>
+                                </div>
+
+                                <!--email address-->
+                                <div class="form-group col-md-6 col-sm-6 col-xs-12">
+                                  <div class="field-label">Email Address</div> 
+                                  <input [(ngModel)]="Order.emailAddress" type="text" name="email"    [formControl]="checkoutForm.controls['email']" value="" placeholder="" autocomplete="off">
+                                  <div *ngIf="checkoutForm.controls.email.touched && checkoutForm.controls.email.errors?.required" class="text text-danger">
+                                   Email is required
+                                  </div>
+                                  <div *ngIf="checkoutForm.controls.email.touched && checkoutForm.controls.email.errors?.email" class="text text-danger">
+                                   Invalid Email
+                                  </div>
+                                </div>
+
+                                <!--address-->
+                                <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                  <div class="field-label">Address</div>
+                                 <input [(ngModel)]="Order.addressLine" type="text" name="address"   [formControl]="checkoutForm.controls['address']" value="" placeholder="" autocomplete="off">
+                                 <div *ngIf="checkoutForm.controls.address.touched && checkoutForm.controls.address.errors?.required" class="text text-danger">
+                                  Address is required
+                                 </div>
+                                 <div *ngIf="checkoutForm.controls.address.touched && checkoutForm.controls.address.errors?.maxlength" class="text text-danger">
+                                   Maximum 50 character
+                                 </div>
+                                </div>
+
+                                <!--country-->
+                                <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                  <div class="field-label">Country</div>
+                                  <input [(ngModel)]="Order.country" type="text" name="country"   [formControl]="checkoutForm.controls['country']" value="" placeholder="" autocomplete="off">
+                                  <div *ngIf="checkoutForm.controls.country.touched && checkoutForm.controls.country.errors?.required" class="text text-danger">
+                                   Country is required
+                                  </div>
+                                </div>
+                                <!--state-->                                
+                                <div class="form-group col-md-12 col-sm-12 col-xs-12">
+                                  <div class="field-label">City</div>
+                                  <input [(ngModel)]="Order.state" type="text" name="town" [formControl]="checkoutForm.controls['city']" value="" placeholder="" autocomplete="off">
+                                   <div *ngIf="checkoutForm.controls.city.touched && checkoutForm.controls.city.errors?.required" class="text text-danger">
+                                   City is required
+                                  </div>
+                                </div>
+
+                                <!--zip code-->
+                                <div class="form-group col-md-12 col-sm-6 col-xs-12">
+                                  <div class="field-label">Postal Code</div>
+                                  <input [(ngModel)]="Order.zipCode" type="text" name="postalCode"   [formControl]="checkoutForm.controls['postalCode']" value="56300" placeholder="" autocomplete="off">
+                                  <div *ngIf="checkoutForm.controls.postalCode.touched && checkoutForm.controls.postalCode.errors?.required" class="text text-danger">
+                                   Postalcode is required
+                                  </div>
+                                </div>                                
+
+
+                                <div  class="col-md-12 col-sm-12 col-xs-12">
+                                  <div class="field-label"> <b>Payment Method</b> </div>
+                                  <div style="margin-top: 9px;" class="row typo-content input_button ">
+                                    <div   class="  col-md-3 col-sm-4 col-xs-12">
+                                      <input [(ngModel)]="Order.paymentMethod" type="radio" 
+                                      [formControl]="checkoutForm.controls['paymentMethod']"
+                                      name="creditCard" id="creditCard" value="1">
+                                      <label class="field-label" style="margin-left: 5px;" for="creditCard"> <b>Credit Card</b> </label>
+                                      
+                                    </div>
+                                    <div   class="  col-md-3 col-sm-4 col-xs-12">
+                                      <input [(ngModel)]="Order.paymentMethod" type="radio"
+                                      [formControl]="checkoutForm.controls['paymentMethod']" 
+                                      name="debitCard" id="debitCard" value="2">
+                                      <label style="margin-left: 5px;"  class="field-label" for="debitCard"> <b> Debit Card </b> </label>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="form-group col-md-12 col-sm-6 col-xs-12">
+                                  <div class="field-label">Name on card</div>
+                                  <input [(ngModel)]="Order.cardName" type="text" name="nameOnCard"   [formControl]="checkoutForm.controls['cardName']" value="" placeholder="" autocomplete="off">
+                                  <div *ngIf="checkoutForm.controls.cardName.touched && checkoutForm.controls.cardName.errors?.required" class="text text-danger">
+                                    CardName is required
+                                  </div>
+                                </div>
+
+                                <div class="form-group col-md-12 col-sm-6 col-xs-12">
+                                  <div class="field-label">Card Number</div>
+                                  <input [(ngModel)]="Order.cardNumber" type="text" name="cardNumber"   [formControl]="checkoutForm.controls['cardNumber']" value="" placeholder="" autocomplete="off">
+                                  <div *ngIf="checkoutForm.controls.cardNumber.touched && checkoutForm.controls.cardNumber.errors?.required" class="text text-danger">
+                                    CardNumber is required
+                                  </div>
+                                </div>
+
+                                <div class="form-group col-md-12 col-sm-6 col-xs-12">
+                                  <div class="field-label">Expiration</div>
+                                  <input [(ngModel)]="Order.expiration" type="text" name="expiration"  [formControl]="checkoutForm.controls['expiration']" value="" placeholder="" autocomplete="off">
+                                  <div *ngIf="checkoutForm.controls.expiration.touched && checkoutForm.controls.expiration.errors?.required" class="text text-danger">
+                                    Expiration is required
+                                  </div>
+                                </div>                                                                
+
+                                <div class="form-group col-md-12 col-sm-6 col-xs-12">
+                                  <div class="field-label">cvv</div>
+                                  <input [(ngModel)]="Order.cvv" type="text" name="cvv"  [formControl]="checkoutForm.controls['cvv']" value="" placeholder="" autocomplete="off">
+                                  <div *ngIf="checkoutForm.controls.cvv.touched && checkoutForm.controls.cvv.errors?.required" class="text text-danger">
+                                    CVV is required
+                                  </div>
+                                </div>                                                                
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-sm-12 col-xs-12">
+                            <div class="checkout-details">
+                                <div class="order-box">
+                                    <div class="title-box">
+                                        <div>Product <span> Total</span></div>
+                                    </div>
+                                    <ul class="qty" *ngIf='cartItem?.items?.length'>
+                                        <li *ngFor="let product of cartItem?.items">
+                                        	 {{ product.productName }} × {{ product.quantity }}
+                                        	<span>
+                                                {{ product.price }}
+                                            </span>
+                                        </li>
+                                    </ul>
+                                    <ul class="qty" *ngIf='!cartItem?.items?.length'>
+                                        <li class="empty-checkout"> There are no products in cart </li>
+                                    </ul>
+                                    <ul class="sub-total">
+                                        <li>
+                                        	Subtotal <span class="count">{{ cartItem?.totalPrice }}</span>
+                                        </li>
+                                    </ul>
+                                    <ul class="total">
+                                        <li>Total <span class="count">{{ cartItem?.totalPrice }}</span></li>
+                                    </ul>
+                                </div>
+
+                                <div class="payment-box" *ngIf='cartItem?.items?.length'>                                    
+                                    <div class="text-right">
+                                      <!--(click)="stripeCheckout()" -->
+                                        <button type="submit" class="btn-solid btn" (click)="submit()" [disabled]="!checkoutForm.valid" >
+                                           Place Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

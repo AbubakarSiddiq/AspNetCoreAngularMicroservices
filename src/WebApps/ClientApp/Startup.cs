@@ -1,9 +1,11 @@
+using ClientApp.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Text.Json.Serialization;
 
 namespace ClientApp
 {
@@ -20,12 +22,19 @@ namespace ClientApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddHttpContextAccessor();
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            services.Configure<ServiceOptions>(this.Configuration.GetSection("Services"));
+            services.AddScoped<IServiceOptionsService, ServiceOptionsService>();
+
+            services.AddMvc()
+                    .AddJsonOptions(opt => opt.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,6 +70,7 @@ namespace ClientApp
                 {
                     //spa.UseAngularCliServer(npmScript: "start");
                     spa.UseProxyToSpaDevelopmentServer("http://calrom.angular.app:4200");
+                    //spa.UseProxyToSpaDevelopmentServer(this.Configuration["NG_DEV_SERVER"]);
                 }
                 else
                 {

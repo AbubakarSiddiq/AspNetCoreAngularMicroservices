@@ -1,0 +1,135 @@
+<!-- header start -->
+<header class="sticky" [ngClass]="class">
+    <div class="mobile-fix-option"></div>
+    <div class="top-header" *ngIf="topbar">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="header-contact">
+                <ul>
+                  <li>Welcome to Inzcart </li>
+                  <li><i class="fa fa-phone" aria-hidden="true"></i>Call Us: 03207319606</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-6 text-right">
+              <ul class="header-dropdown">
+                <!-- <li class="compare">
+                  <a ><i class="fa fa-gavel" aria-hidden="true"></i>Terms & Condition</a>
+                </li> -->
+                <li class="mobile-wishlist">
+                  <a ><i class="fa fa-user-secret" aria-hidden="true"></i>Privacy Policy</a>
+                </li>
+                <li class="mobile-wishlist">
+                  <a [routerLink]="['/faq']"><i class="fa fa-heart" aria-hidden="true"></i>FAQ's</a>
+                </li>
+                <li class="onhover-dropdown mobile-account">
+                  <i class="fa fa-user" aria-hidden="true"></i> My Account
+                  <ul class="onhover-show-div">
+                    <li *ngIf="isLoggedIn()" >
+                      <a data-lng="en" routerLink="/dashboard" >
+                        My Orders
+                      </a>
+                    </li>
+                    <li *ngIf="isLoggedIn()" >
+                      <a routerLink="/profile" routerLinkActive="active" data-lng="en">
+                        Update Profile
+                      </a>
+                    </li>
+                    <li *ngIf="!isLoggedIn()" >
+                      <a routerLink="/login" routerLinkActive="active" data-lng="en">
+                        Login
+                      </a>
+                    </li>
+                    <li *ngIf="!isLoggedIn()" >
+                      <a routerLink="/register" routerLinkActive="active" data-lng="en">
+                        Register
+                      </a>
+                    </li>
+                    <li (click)="logout()" >
+                      <a *ngIf="isLoggedIn()"  data-lng="es">
+                        Logout
+                      </a>
+                    </li>
+                    <li >
+                      <a [routerLink]="['/faq']">
+                        FAQ's
+                      </a>
+                        <!-- <i class="fa fa-heart" aria-hidden="true"></i> -->
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="main-menu">
+            <div class="menu-left">
+              <!-- <app-left-menu></app-left-menu> -->
+              <div class="brand-logo">
+                <a routerLink="/" id="headerlogo">
+                  <img [src]="themeLogo"  class="img-fluid" alt="logo">
+                </a>
+              </div>
+              
+            </div>
+            <div class="menu-right pull-right">
+              <div>
+                <app-menu></app-menu> 
+              </div> 
+              <div>
+                <app-settings></app-settings>
+              </div>
+            </div> 
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="main-menu border-section border-top-0">
+                    <div class="brand-logo layout2-logo">
+                        <a [routerLink]="['/']">
+                            <img [src]="themeLogo" class="img-fluid" alt="logo">
+                        </a>
+                    </div>
+                    <div>
+                        <form class="form_search" role="form">
+                            <input id="query search-autocomplete" type="search"  placeholder="Find the best for your..." class="nav-search nav-search-field" aria-expanded="true">
+                            <button type="button" name="nav-submit-button" class="btn-search">
+                                <i class="ti-search"></i>
+                            </button>
+                        </form>
+                         
+                    </div>
+                    <div class="menu-right pull-right">
+                        <app-settings></app-settings>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- <div class="container">
+        <div class="row ">
+            <div class="col-lg-12">
+                <div class="main-nav-center">
+                    <app-menu></app-menu>
+                </div>
+            </div>
+        </div>
+    </div> -->
+</header>
+<!-- header end -->
+
+
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size = "medium" color = "#02ce35" type = "ball-atom" [fullScreen] = "true"><p style="color: white" > Loading... </p></ngx-spinner>

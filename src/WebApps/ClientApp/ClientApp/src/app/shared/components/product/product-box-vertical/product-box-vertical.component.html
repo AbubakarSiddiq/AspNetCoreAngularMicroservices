@@ -1,0 +1,16 @@
+<div class="media">
+    <a [routerLink]="['/product/left/sidebar/', product.name.replace(' ', '-')]">
+        <!--<img [defaultImage]="ImageSrc ? ImageSrc : 'assets/images/product/lime.jpg'" 
+             [lazyLoad]="ImageSrc ? ImageSrc : product.images[0].src"  
+             class="img-fluid lazy-loading" alt="{{ product.images[0].alt }}">-->
+        <img [defaultImage]="getImageSrc(product)" 
+             [lazyLoad]="getImageSrc(product)"  
+             class="img-fluid lazy-loading" alt="{{ product.imageFile }}">
+    </a>
+	<div class="media-body align-self-center">
+        <a [routerLink]="['/product/left/sidebar/', product.name.replace(' ', '-')]">
+            <h6>{{ product.name | titlecase }}</h6>
+        </a>
+		<h4>{{ product?.price | discount:product | currency:currency?.currency:'symbol' }}</h4>
+	</div>
+</div>

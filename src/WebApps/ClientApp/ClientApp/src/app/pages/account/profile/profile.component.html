@@ -1,0 +1,223 @@
+<app-breadcrumb [title]="'Profile'" [breadcrumb]="'Profile'"></app-breadcrumb>
+<!-- personal deatail section start -->
+<section class="contact-page register-page"    >
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3>PERSONAL DETAIL</h3>
+                <form class="theme-form">
+                    <div class="form-row" [formGroup]="profileForm" novalidate>
+                        <!-- <div class="col-md-6 ">
+                            <label for="name">First Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter Your name" required="">
+                        </div> -->
+                        <div class="col-md-6 form-group ">
+                            <label for="username">User Name</label>
+                            <input required="" disabled name="profile[username]" type="text" class="form-control"
+                                placeholder="username" [formControl]="profileForm.controls['username']"
+                                id="username" formControlName="username" [(ngModel)]="ProfileObj.username">
+                            <div *ngIf="profileForm.controls.username.touched && profileForm.controls.username.errors?.required"
+                                class="text text-danger">
+                                User Name is required.
+                            </div>
+                            <div *ngIf="profileForm.controls.username.touched && profileForm.controls.username.errors?.pattern"
+                                class="text text-danger">
+                                User Name must be an alphabates.
+                            </div>
+                        </div>
+                        <!-- <div class="col-md-6">
+                            <label for="email">Last Name</label>
+                            <input type="text" class="form-control" id="last-name" placeholder="Email" required="">
+                        </div> -->
+                        <div class="col-md-6 form-group "> 
+                            <label for="email">Email</label>
+                            <input class="form-control" disabled [(ngModel)]="ProfileObj.email" type="text" name="email"
+                                [formControl]="profileForm.controls['email']" value="" placeholder="Email"
+                                autocomplete="off">
+                            <div *ngIf="profileForm.controls.email.touched && profileForm.controls.email.errors?.required"
+                                class="text text-danger">
+                                Email is required
+                            </div>
+                            <div *ngIf="profileForm.controls.email.touched && profileForm.controls.email.errors?.email"
+                                class="text text-danger">
+                                Invalid Email
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 form-group">
+                            <label for="firstName">First Name</label>
+                            <input class="form-control" [(ngModel)]="ProfileObj.firstName" type="text" name="firstName"
+                                    [formControl]="profileForm.controls['firstName']" value="" placeholder="" autocomplete="off">
+                                  <div *ngIf="profileForm.controls.firstName.touched && profileForm.controls.firstName.errors?.required"
+                                    class="text text-danger">
+                                    First Name is required.
+                                  </div>
+                                  <div *ngIf="profileForm.controls.firstName.touched && profileForm.controls.firstName.errors?.pattern"
+                                    class="text text-danger">
+                                    First Name must be an alphabates.
+                                  </div>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label for="lastName">Last Name</label>
+                            <input class="form-control" [(ngModel)]="ProfileObj.lastName" type="text" name="lastName"
+                                    [formControl]="profileForm.controls['lastName']" value="" placeholder="" 
+                                    autocomplete="off">
+                                  <div *ngIf="profileForm.controls.lastName.touched && profileForm.controls.lastName.errors?.required"
+                                    class="text text-danger">
+                                    Last Name is required.
+                                  </div>
+                                  <div *ngIf="profileForm.controls.lastName.touched && profileForm.controls.lastName.errors?.pattern"
+                                    class="text text-danger">
+                                    Last Name must be an alphabates.
+                                  </div>
+                        </div>
+                        <div class="col-md-6 form-group"> 
+                            <label for="phone">Phone</label>
+                            <input class="form-control" [(ngModel)]="ProfileObj.phone" type="text" name="phone"
+                                [formControl]="profileForm.controls['phone']" value=""
+                                placeholder="E.g. 0321*******" autocomplete="off">
+                            <!-- <div *ngIf="profileForm.controls.phone.touched && profileForm.controls.phone.errors?.required"
+                                class="text text-danger">
+                                Phone No is required.
+                            </div> -->
+                            <div *ngIf="profileForm.controls.phone.touched && profileForm.controls.phone.errors?.pattern"
+                                class="text text-danger">
+                                Please enter valid phone number. For Example: 0321*******.
+                            </div>
+                        </div>
+                        <div class="col-md-6 form-group"> 
+                            <label for="area">Area</label>
+                            <!-- <input class="form-control" [(ngModel)]="ProfileObj.phone" type="text" name="phone"
+                                [formControl]="profileForm.controls['phone']" value=""
+                                placeholder="E.g. 0321*******" autocomplete="off"> -->
+
+                            <p-dropdown   [options]="areas" [filter]="true" [(ngModel)]="areaObj" name="area" 
+                            optionLabel="name" dataKey="areaId" 
+                            [formControl]="profileForm.controls['area']" [style]="{'width': '100%'}" 
+                            ></p-dropdown>
+
+
+                            <div *ngIf="profileForm.controls.area.touched && profileForm.controls.area.errors?.required"
+                                class="text text-danger">
+                                Area is required.
+                            </div>
+                            <!-- <div *ngIf="profileForm.controls.phone.touched && profileForm.controls.phone.errors?.pattern"
+                                class="text text-danger">
+                                Please enter valid phone number. For Example: 0321*******.
+                            </div> -->
+                        </div>
+
+                        <div class="col-md-6 form-group">
+                            <label for="address">Address</label>
+                            <input class="form-control" [(ngModel)]="ProfileObj.address" type="text" name="address"
+                                    [formControl]="profileForm.controls['address']" value="" placeholder="" 
+                                    autocomplete="off">
+                                  <div *ngIf="profileForm.controls.address.touched && profileForm.controls.address.errors?.required"
+                                    class="text text-danger">
+                                    Address is required.
+                                  </div>
+                                  <!-- <div *ngIf="profileForm.controls.address.touched && profileForm.controls.address.errors?.pattern"
+                                    class="text text-danger">
+                                    Last Name must be an alphabates.
+                                  </div> -->
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Section ends -->
+<!-- address section start -->
+<section class="contact-page register-page section-b-space"   >
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3>Update Password <small>(If you don't want to update your password then leave this section) </small></h3>
+                <form class="theme-form" [formGroup]="profileForm" novalidate>
+                    <div class="form-row">
+                        <!-- <div class="col-md-6">
+                            <label for="name">flat / plot</label>
+                            <input type="text" class="form-control" id="home-ploat" placeholder="company name" required="">
+                        </div> -->
+                        <div class="col-md-6 form-group ">
+                            <label for="password">Current Password</label>
+                            <input required="" name="profile[currentPassword]" type="password" class="form-control"
+                                placeholder="Current Password" formControlName="currentPassword" minlength="6"
+                                [formControl]="profileForm.controls['currentPassword']"
+                                [(ngModel)]="currentPassword">
+                            <!-- <div *ngIf="profileForm.controls.currentPassword.touched && profileForm.controls.currentPassword.errors?.required"
+                                class="text text-danger">
+                                Password is required.
+                            </div> -->
+                            <div *ngIf="profileForm.controls.currentPassword.touched && profileForm.controls.currentPassword.errors?.pattern"
+                                class="text text-danger">
+                                Password length must be greater than 5
+                            </div> 
+                        </div>
+                        <!-- <div class="col-md-6">
+                            <label for="name">Address *</label>
+                            <input type="text" class="form-control" id="address-two" placeholder="Address" required="">
+                        </div> -->
+                        <div class="col-md-6 form-group ">
+                            <label for="password">New Password</label>
+                            <input required="" name="register[password]" type="password" class="form-control"
+                                placeholder="Password" formControlName="password" minlength="6"
+                                [formControl]="profileForm.controls['password']"
+                                [(ngModel)]="ProfileObj.password">
+                            <!-- <div *ngIf="profileForm.controls.password.touched && profileForm.controls.password.errors?.required"
+                                class="text text-danger">
+                                Password is required.
+                            </div> -->
+                            <div *ngIf="profileForm.controls.password.touched && profileForm.controls.password.errors?.pattern"
+                                class="text text-danger">
+                                Password length must be greater than 5
+                            </div> 
+                        </div>
+                        <div class="col-md-6 form-group ">
+                            <label for="password">Confirm Password</label>
+                            <input required="" name="profile[confirmPassword]" type="password" class="form-control"
+                                placeholder="Confirm Password" formControlName="confirmPassword" minlength="6"
+                                [formControl]="profileForm.controls['confirmPassword']"
+                                [(ngModel)]="confirmPassword">
+                            <!-- <div *ngIf="profileForm.controls.currentPassword.touched && profileForm.controls.currentPassword.errors?.required"
+                                class="text text-danger">
+                                Password is required.
+                            </div> -->
+                            <div *ngIf="profileForm.controls.confirmPassword.touched && profileForm.controls.confirmPassword.errors?.pattern"
+                                class="text text-danger">
+                                Confirm Password length must be greater than 5
+                            </div> 
+                            <div *ngIf="confirmPassword != ProfileObj.password"
+                                class="text text-danger">
+                                Confirm password must be the same as new password 
+                            </div> 
+                        </div>
+                        <!-- <div class="col-md-6 select_input">
+                            <label for="review">Country *</label>
+                            <select class="form-control" size="1">
+                                <option value="India">India</option>
+                                <option value="UAE">UAE</option>
+                                <option value="U.K">U.K</option>
+                                <option value="US">US</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="review">City *</label>
+                            <input type="text" class="form-control" id="city" placeholder="City" required="">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="review">Region/State *</label>
+                            <input type="text" class="form-control" id="region-state" placeholder="Region/state" required="">
+                        </div> -->
+                        <div class="col-md-12">
+                            <button class="btn btn-sm btn-solid" (click)="onSubmit()"  type="submit">Update Profile</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Section ends -->

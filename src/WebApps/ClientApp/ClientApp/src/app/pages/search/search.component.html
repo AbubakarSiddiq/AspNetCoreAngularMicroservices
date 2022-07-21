@@ -1,0 +1,70 @@
+<app-breadcrumb [title]="'Search'" [breadcrumb]="'Search'"></app-breadcrumb>
+<!-- section start -->
+<section class="authentication-page section-b-space">
+  <div class="container">
+    <section class="search-block">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 offset-lg-3">
+            <form class="form-header">
+              <div class="form-group">
+                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Search a Product"
+                  name="searchString" [ngModelOptions]="{standalone: true}" [(ngModel)]="searchString">
+              </div>
+              <button type="submit" (click)="searchProducts()" class="btn btn-primary"><i
+                  class="fa fa-search"></i></button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- <div *ngIf="this.products.length == 0" class="col-sm-12 text-center">
+          <img src="assets/images/empty-search.jpg" class="img-fluid mb-4">
+            <h3>Sorry! Couldn't find the product you were looking For!!!    </h3>
+            <p>Please check if you have misspelt something or try searching with other words.</p>
+            <a [routerLink]="['/categories']" class="btn btn-solid">continue shopping</a>
+        </div> -->
+
+
+    <div class="collection-content col">
+      <div class="page-main-content">
+        <div class="row">
+          <div class="col-sm-12">
+
+
+            <div class="collection-product-wrapper" id="products">
+              <div class="product-wrapper-grid" [ngClass]="layoutView">
+                <div class="row">
+                  <div class="col-grid-box" [ngClass]="grid" *ngFor="let product of products">
+                    <div class="product-box">
+                      <!-- [loader]="true" -->
+                      <app-product-box-five [product]="product" [currency]="product?.price" [thumbnail]="false"
+                        [cartModal]="false">
+                      </app-product-box-five>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 text-center section-b-space mt-5 no-found" *ngIf="!products.length">
+                    <img src="assets/images/empty-search.jpg" class="img-fluid mb-4">
+                    <h3>Sorry! Couldn't find the product you were looking For!!! </h3>
+                    <p>Please check if you have misspelt something or try searching with other words.</p>
+                    <a [routerLink]="['/categories']" class="btn btn-solid">Back To Categories</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
+
+  </div>
+</section>
+<!-- section end -->
+
+<app-cart-variation [direction]="'right'"></app-cart-variation>

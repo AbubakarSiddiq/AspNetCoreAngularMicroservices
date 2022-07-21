@@ -26,6 +26,7 @@ RUN dotnet publish "ClientApp.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
+#ENV ASPNETCORE_URLS http://*:80
 COPY --from=publish /app/publish .
 
 COPY --from=client /app/dist /app/dist
