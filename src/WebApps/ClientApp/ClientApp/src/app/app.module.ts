@@ -25,6 +25,8 @@ import { CoreModule } from './core/core.module';
 import { ConfigService } from './core/services/config.service';
 import { SharedModule } from './shared/shared.module';
 import { tap } from 'rxjs/operators';
+import { AuthnModule } from './authn/authn.module';
+import { AuthModule, LogLevel, OidcConfigService } from 'angular-auth-oidc-client';
 const firebaseConfig = {  }
 
 // import 'hammerjs';
@@ -42,6 +44,21 @@ export function HttpLoaderFactory(http: HttpClient) {
    return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
 }
 
+//export function configureAuth(oidcConfigService: OidcConfigService) {
+  //return () =>
+      //oidcConfigService.withConfig({
+          //stsServer: 'https://localhost:5007',
+          //redirectUrl: window.location.origin + '/signin-oidc',
+          //postLogoutRedirectUri: window.location.origin,
+          //clientId: 'angular_client',
+          //scope: 'openid profile catalogAPI',
+          //responseType: 'code',
+          //silentRenew: true,
+          //silentRenewUrl: `${window.location.origin}/silent-renew.html`,
+          //logLevel: LogLevel.Debug,
+      //});
+//}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,6 +72,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     NgbModule,
     LoadingBarHttpClientModule,
     LoadingBarRouterModule,
+    AuthnModule.forRoot(),
     CoreModule,
     ToastrModule.forRoot({
       timeOut: 3000,
@@ -76,12 +94,12 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   bootstrap: [AppComponent],
   providers: [
-    {
-      provide: APP_INITIALIZER,
-      useFactory: appInitialize,
-      deps: [ConfigService],
-      multi: true
-    },
+    //{
+      //provide: APP_INITIALIZER,
+      //useFactory: appInitialize,
+      //deps: [ConfigService],
+      //multi: true
+    //},
     HttpClientModule,
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     CookieService,
