@@ -21,21 +21,23 @@ export class AuthConfigService {
     //return configService.getServiceConfig()
       //.pipe(
         //map(cfg => {
-          return of({
-            //authority: cfg.identityUrl,
-            authority: 'https://localhost:5007',
-            redirectUrl: `${window.location.origin}/${AuthenticationPaths.loginCallback}`,
-            postLogoutRedirectUri: `${window.location.origin}/${AuthenticationPaths.logOutCallback}`,
-            //clientId: cfg.identityClientId,
-            clientId: 'angular_client',
-            scope: 'openid profile catalogAPI',
-            responseType: 'code',
-            silentRenew: true,
-            silentRenewUrl: `${window.location.origin}/silent-renew.html`,
-            logLevel: LogLevel.Error,
-            // renew 2 minutes before token expiry.  Until we implement token delegation for eventbus.
-            renewTimeBeforeTokenExpiresInSeconds: 120
-          } as OpenIdConfiguration);
+          // new here
+          return of();
+          // // return of({
+          // //   //authority: cfg.identityUrl,
+          // //   authority: 'https://localhost:5007',
+          // //   redirectUrl: `${window.location.origin}/${AuthenticationPaths.loginCallback}`,
+          // //   postLogoutRedirectUri: `${window.location.origin}/${AuthenticationPaths.logOutCallback}`,
+          // //   //clientId: cfg.identityClientId,
+          // //   clientId: 'angular_client',
+          // //   scope: 'openid profile catalogAPI',
+          // //   responseType: 'code',
+          // //   silentRenew: true,
+          // //   silentRenewUrl: `${window.location.origin}/silent-renew.html`,
+          // //   logLevel: LogLevel.Error,
+          // //   // renew 2 minutes before token expiry.  Until we implement token delegation for eventbus.
+          // //   renewTimeBeforeTokenExpiresInSeconds: 120
+          // // } as OpenIdConfiguration);
         //})
       //);
   }

@@ -15,6 +15,7 @@ export class OrderService {
   
     public GetOrdersByUserName(userName: string): Observable<OrderResponseModel[]>
     {
-      return this.httpClient.get<OrderResponseModel[]>(`${this.configStore.apiUrl}/Order/${userName}`)
+      return this.httpClient.get<OrderResponseModel[]>(`http://localhost:8010/}/Order/${userName}`)
+      //return this.httpClient.get<OrderResponseModel[]>(`${this.configStore.apiUrl}/Order/${userName}`)
     }
 }

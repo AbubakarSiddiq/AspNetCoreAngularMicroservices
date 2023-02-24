@@ -53,13 +53,14 @@ export class AppComponent implements OnInit {
   } 
 
   ngOnInit(): void {
-    this.oidcSecurityService.checkAuth()
-    .subscribe((isAuthenticated) => 
-    {
-      console.log('app authenticated', isAuthenticated);
-      this.testlogin();
+    // new
+    // // this.oidcSecurityService.checkAuth()
+    // // .subscribe((isAuthenticated) => 
+    // // {
+    // //   console.log('app authenticated', isAuthenticated);
+    // //   this.testlogin();
 
-    });
+    // // });
   }
 
   testlogin() {
@@ -72,16 +73,17 @@ export class AppComponent implements OnInit {
    return () => this.authenticationService.initialize()
     .pipe(
       switchMap(login => {
-        if (!login.isAuthenticated) {
-          console.log('App Initializers: Authentication signing in.');
-          return this.authenticationService.signIn();
-         }
-        else if (login.userData.setupPending) {
-          this.router.navigate(['registration', 'setup-user', login.userData.userId], {
-            replaceUrl: true
-          });
-          return EMPTY;
-        }
+        // new
+        // // if (!login.isAuthenticated) {
+        // //   console.log('App Initializers: Authentication signing in.');
+        // //   return this.authenticationService.signIn();
+        // //  }
+        // // else if (login.userData.setupPending) {
+        // //   this.router.navigate(['registration', 'setup-user', login.userData.userId], {
+        // //     replaceUrl: true
+        // //   });
+        // //   return EMPTY;
+        // // }
         console.log('App Initializers: Authentication already signed in.');
         return of({});
       }),

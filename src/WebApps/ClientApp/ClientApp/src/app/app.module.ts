@@ -18,8 +18,8 @@ import { AuthGuard } from './shared/services/auth.guard'
 import { TokenInterceptor } from './shared/services/TokenInterceptor'
 
 import {environment} from './../environments/environment'
-import { AngularFireModule  } from '@angular/fire';
-import { AngularFireAuthModule } from '@angular/fire/auth';
+//import { AngularFireModule  } from '@angular/fire';
+//import { AngularFireAuthModule } from '@angular/fire/auth';
 import { FormsModule } from '@angular/forms';
 import { CoreModule } from './core/core.module';
 import { ConfigService } from './core/services/config.service';
@@ -89,8 +89,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     SharedModule,
     AppRoutingModule,
     CalendarModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule
+    //AngularFireModule.initializeApp(environment.firebase),
+    //AngularFireAuthModule
   ],
   bootstrap: [AppComponent],
   providers: [

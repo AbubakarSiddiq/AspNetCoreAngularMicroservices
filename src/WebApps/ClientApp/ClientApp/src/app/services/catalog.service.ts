@@ -16,7 +16,12 @@ export class CatalogService {
 
   public GetCatalog(): Observable<CatalogModel[]> 
   {
-    return this.httpClient.get<CatalogModel[]>(`${this.configStore.apiUrl}/Catalog`);
+    debugger;
+    var abc = this.httpClient.get<CatalogModel[]>(`http://localhost:8010/catalog`);
+    //console.log(${this.configStore.apiUrl});
+    console.log('this. ');
+    console.log(abc);
+    return abc;
   }
 
   public GetCatalogById(id: string): Observable<CatalogModel>
