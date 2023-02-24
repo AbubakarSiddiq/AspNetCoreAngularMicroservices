@@ -29,5 +29,11 @@ namespace OcelotApiGw
                     webBuilder.UseStartup<Startup>();
                 })
                 .UseSerilog(SeriLogger.Configure);
+                ////.ConfigureLogging((hostingContext, loggingbuilder) =>
+                ////{
+                ////    loggingbuilder.AddConfiguration(hostingContext.Configuration.GetSection("Logging"));
+                ////    loggingbuilder.AddConsole();
+                ////    loggingbuilder.AddDebug();
+                ////});
     }
 }
